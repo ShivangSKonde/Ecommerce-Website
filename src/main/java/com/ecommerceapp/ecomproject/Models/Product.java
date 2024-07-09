@@ -1,5 +1,8 @@
 package com.ecommerceapp.ecomproject.Models;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 //import lombok.Lombok;
@@ -10,7 +13,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+
+@Entity
+public class Product extends BaseModel {
     //{
 //        id:1,
 //            title:'...',
@@ -19,11 +24,12 @@ public class Product {
 //            description:'...',
 //            image:'...'
 //    },
-    private int id;
+
     private String title;
     private String description;
     private String imageurl;
     private double price;
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     private Category category;
 
 

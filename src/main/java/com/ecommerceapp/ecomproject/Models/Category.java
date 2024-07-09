@@ -1,5 +1,6 @@
 package com.ecommerceapp.ecomproject.Models;
 
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,8 +10,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
-   private int id;
+@Entity
+public class Category extends BaseModel{
    private String title;
 
 }

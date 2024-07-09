@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-@Service
+@Service("FakeStore")
 public class FakeStoreProductService implements ProductService{
 
     RestTemplate restTemplate;
@@ -28,7 +28,7 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public List<Product> getAllProducts() {
+    public List<Product> getAllProducts(String cattitle) {
         return List.of();
     }
 
@@ -47,4 +47,24 @@ public class FakeStoreProductService implements ProductService{
         FakeStoreProductDto fsProductDto = restTemplate.postForObject("https://fakestoreapi.com/products", fakeStoreProductDto, FakeStoreProductDto.class);
         return fsProductDto.toProduct();
     }
+
+    @Override
+    public Product updateProduct(Product product) {
+        return null;
+    }
+
+    @Override
+    public void deleteProduct(int id) throws ProductNotFoundException {
+        //FakeStoreProductDto fakeStoreProductDto = new FakeStoreProductDto();
+        try{
+            restTemplate.delete("https://fakestoreapi.com/products/"+id,FakeStoreProductDto.class);
+        }
+        catch(Exception e){
+            if(e instanceof ProductNotFoundException){
+                throw new ProductNotFoundException("Product not found with id"+id);
+            }
+        }
+    }
+
+
 }
