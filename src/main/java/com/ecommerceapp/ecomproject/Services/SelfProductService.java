@@ -38,6 +38,15 @@ public class SelfProductService implements ProductService{
 
     @Override
     public Product createProduct(Product product) {
+        //Category c=product.getCategory();
+        Category exist=categoryRepository.findByTitle(product.getCategory().getTitle());
+        if(exist==null)
+        {
+            categoryRepository.save(product.getCategory());
+        }
+        else{
+            product.setCategory(exist);
+        }
         Product product1= productRepository.save(product);
         return product1;
     }
