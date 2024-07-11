@@ -53,6 +53,13 @@ public class ProductController {
        return new ResponseEntity<>(deletionMessageDto, HttpStatus.OK);
    }
 
+   @PutMapping("product/{title}")
+   public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable("title") String title) throws ProductNotFoundException {
+        Product product1=productService.UpdateProduct(title,product);
+        ResponseEntity<Product> res=new ResponseEntity<>(product1,HttpStatus.OK);
+        return res;
+   }
+
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorMessage> handleProductNotFoundException(Exception ex){
         ErrorMessage errorMessage=new ErrorMessage();

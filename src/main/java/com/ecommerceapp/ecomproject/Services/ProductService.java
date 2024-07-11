@@ -11,4 +11,5 @@ public interface ProductService  {
     public Product createProduct(Product product);
     public Product updateProduct(Product product);
     public void deleteProduct(int id) throws ProductNotFoundException;
+    public Product UpdateProduct(String title,Product product) throws ProductNotFoundException;
 }

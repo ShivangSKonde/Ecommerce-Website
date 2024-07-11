@@ -66,5 +66,10 @@ public class FakeStoreProductService implements ProductService{
         }
     }
 
+    @Override
+    public Product UpdateProduct(String title, Product product) throws ProductNotFoundException{
+        return null;
+    }
+
 
 }

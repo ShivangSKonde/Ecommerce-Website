@@ -67,5 +67,31 @@ public class SelfProductService implements ProductService{
 
     }
 
+    @Override
+    public Product UpdateProduct(String title, Product product) throws ProductNotFoundException{
+        Product product1=productRepository.findByTitle(title);
+        if(product1==null)
+        {
+            throw new ProductNotFoundException("Product not found with title: "+title);
+        }
+        else{
+            product1.setTitle(product.getTitle());
+            product1.setPrice(product.getPrice());
+            product1.setImageurl(product.getImageurl());
+            product1.setDescription(product.getDescription());
+
+            Category c=categoryRepository.findByTitle(product.getCategory().getTitle());
+            if(c==null)
+            {
+                categoryRepository.save(product.getCategory());
+            }
+            else{
+                product1.setCategory(c);
+            }
+            productRepository.save(product1);
+        }
+        return product1;
+    }
+
 
 }
