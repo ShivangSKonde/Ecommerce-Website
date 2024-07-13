@@ -8,6 +8,7 @@ import com.ecommerceapp.ecomproject.dtos.ErrorMessage;
 import com.ecommerceapp.ecomproject.exceptions.ProductNotFoundException;
 import com.ecommerceapp.ecomproject.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +42,7 @@ public class ProductController {
    @GetMapping("/products/{title}")
    public List<Product> getProductsByTitle(@PathVariable("title") String title)
    {
-       List<Product> ls=productService.getAllProducts(title);
+       List<Product> ls=productService.getAllProductsByCategoty(title);
        return ls;
    }
 
@@ -53,11 +54,18 @@ public class ProductController {
        return new ResponseEntity<>(deletionMessageDto, HttpStatus.OK);
    }
 
-   @PutMapping("product/{title}")
+   @PutMapping("/product/{title}")
    public ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable("title") String title) throws ProductNotFoundException {
         Product product1=productService.UpdateProduct(title,product);
         ResponseEntity<Product> res=new ResponseEntity<>(product1,HttpStatus.OK);
         return res;
+   }
+
+   @GetMapping("/products")
+   public Page<Product> getAllProducts(@RequestParam("pagesize") int pagesize,@RequestParam("pagenumber") int pagenumber,@RequestParam("feild") String feild)
+   {
+       Page<Product> products=productService.getAllProducts(pagesize,pagenumber,feild);
+       return products;
    }
 
     @ExceptionHandler(ProductNotFoundException.class)

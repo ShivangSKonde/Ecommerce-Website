@@ -5,8 +5,12 @@ import com.ecommerceapp.ecomproject.Models.Product;
 import com.ecommerceapp.ecomproject.exceptions.ProductNotFoundException;
 import com.ecommerceapp.ecomproject.repositories.CategoryRepository;
 import com.ecommerceapp.ecomproject.repositories.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Service("SelfProductService")
@@ -28,8 +32,9 @@ public class SelfProductService implements ProductService{
     }
 
     @Override
-    public List<Product> getAllProducts(String cattitle) {
+    public List<Product> getAllProductsByCategoty(String cattitle) {
         //get the id of a category title
+        //List<Product>=productRepository.findAll()
         Category c=categoryRepository.findByTitle(cattitle);
         int k=c.getId();
         List<Product> l=productRepository.FindByCategoryId(k);
@@ -91,6 +96,12 @@ public class SelfProductService implements ProductService{
             productRepository.save(product1);
         }
         return product1;
+    }
+
+    @Override
+    public Page<Product> getAllProducts(int pagesize, int pagenumber ,String feild) {
+        Page<Product> allprod=productRepository.findAll(PageRequest.of(pagenumber,pagesize, Sort.by(feild).ascending()));
+        return allprod;
     }
 
 

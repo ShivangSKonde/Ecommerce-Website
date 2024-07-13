@@ -3,6 +3,7 @@ package com.ecommerceapp.ecomproject.Services;
 import com.ecommerceapp.ecomproject.Models.Product;
 import com.ecommerceapp.ecomproject.dtos.FakeStoreProductDto;
 import com.ecommerceapp.ecomproject.exceptions.ProductNotFoundException;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,7 +29,7 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public List<Product> getAllProducts(String cattitle) {
+    public List<Product> getAllProductsByCategoty(String cattitle) {
         return List.of();
     }
 
@@ -68,6 +69,11 @@ public class FakeStoreProductService implements ProductService{
 
     @Override
     public Product UpdateProduct(String title, Product product) throws ProductNotFoundException{
+        return null;
+    }
+
+    @Override
+    public Page<Product> getAllProducts(int pagesize, int pagenumber,String feild) {
         return null;
     }
 

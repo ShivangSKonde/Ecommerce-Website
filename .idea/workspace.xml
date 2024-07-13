@@ -10,6 +10,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/Services/FakeStoreProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/Services/FakeStoreProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/Services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/Services/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/Services/SelfProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/Services/SelfProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/repositories/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ecommerceapp/ecomproject/repositories/ProductRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +132,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720079991543</updated>
-      <workItem from="1720079992710" duration="62765000" />
+      <workItem from="1720079992710" duration="74260000" />
     </task>
     <servers />
   </component>
